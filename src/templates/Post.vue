@@ -51,7 +51,7 @@
         </article>
   </Layout>
 </template>
-<page-query>
+<!-- <page-query>
   query ($id:ID!) {
     post(id:$id){
       id,
@@ -60,7 +60,7 @@
       path
     }
   }
-</page-query>
+</page-query> -->
 
 <script>
 export default {

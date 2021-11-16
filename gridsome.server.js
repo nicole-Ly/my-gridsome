@@ -8,15 +8,15 @@ const axios = require('axios')
 
 module.exports = function (api) {
   api.loadSource(async({ addCollection }) => {
-    const collection = addCollection('Post')
-    const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    for (const item of data) {
-      collection.addNode({
-        id: item.id,
-        title: item.title,
-        content: item.body
-      })
-    }
+    // const collection = addCollection('Post')
+    // const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    // for (const item of data) {
+    //   collection.addNode({
+    //     id: item.id,
+    //     title: item.title,
+    //     content: item.body
+    //   })
+    // }
   })
 
   api.createPages(({ createPage }) => {

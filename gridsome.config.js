@@ -10,10 +10,10 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL:  process.env.GRIDSOME_API_URL,//服务器上部署strapi的地址，如果是本地就部署本地地址
+        apiURL: 'http://localhost:1337',
         queryLimit: 1000, // Defaults to 100
-        contentTypes: ['post', 'tag'],
-        singleTypes: ['general'],
+        contentTypes: ['post'],
+        // singleTypes: ['impressum'],
         // Possibility to login with a Strapi user,
         // when content types are not publicly available (optional).
         // loginData: {
@@ -24,7 +24,7 @@ module.exports = {
     }
   ],
   templates: {
-    Post: [
+    StrapiPost: [
       {
         path: '/posts/:id',
         component: './src/templates/Post.vue'

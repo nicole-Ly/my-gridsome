@@ -18,58 +18,24 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post preview-->
-                <div class="post-preview">
+                <div class="post-preview" v-for="edge in $page.posts.edges" :key="edge.node.id">
                      <g-link to="/posts/1">
-                        <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                        <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                        <h2 class="post-title">{{edge.node.title}}</h2>
                     </g-link>
                     <p class="post-meta">
-                        Posted by
+                       Posted by
                         <a href="#!">Start Bootstrap</a>
-                        on September 24, 2021
+                        on September {{edge.node.created_at}}
                     </p>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
                     <p class="post-meta">
-                        Posted by
-                        <a href="#!">Start Bootstrap</a>
-                        on September 18, 2021
+                      {{edge.node.content}}
                     </p>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                        <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                    </a>
                     <p class="post-meta">
-                        Posted by
-                        <a href="#!">Start Bootstrap</a>
-                        on August 24, 2021
+                      <a style="color:blue" href="" v-for="tag in edge.node.tags" :key="tag.id">{{tag.title}} &nbsp;</a>
                     </p>
+                    <hr class="my-4" />
                 </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">Failure is not an option</h2>
-                        <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                    </a>
-                    <p class="post-meta">
-                        Posted by
-                        <a href="#!">Start Bootstrap</a>
-                        on July 8, 2021
-                    </p>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
+                <Pager :info="$page.posts.pageInfo"/>
                 <!-- Pager-->
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
             </div>
@@ -77,9 +43,37 @@
     </div>
   </Layout>
 </template>
-
+  <page-query>
+    query ($page: Int) {
+      posts:allStrapiPost(perPage:2, page:$page) @paginate {
+        pageInfo {
+          totalPages
+          currentPage
+        }
+        edges{
+          node{
+            id
+            title
+            content
+            isPublish
+            tags{
+              id
+              title
+            }
+            created_at
+          }
+        }
+      }
+    }
+  </page-query>
 <script>
+import { Pager } from 'gridsome'
+
 export default {
+  name:'indexPage',
+   components: {
+    Pager
+  },
   metaInfo: {
     title: 'Hello, world!'
   }
