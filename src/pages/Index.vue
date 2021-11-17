@@ -3,7 +3,7 @@
     <!-- Page Header-->
     <header
       class="masthead"
-      :style="`background-image: url('http://localhost:1337${general.node.cover.url}')`">
+      :style="`background-image: url('${GRIDSOME_API_URL}${general.node.cover.url}')`">
     >
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
