@@ -1,5 +1,21 @@
 <template>
   <Layout>
+    <!-- Page Header-->
+    <!-- <header
+      class="masthead"
+      :style="`background-image: url('${GRIDSOME_API_URL}${general.node.cover.url}')`">
+    >
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+              <h1>{{general.node.title}}</h1>
+              <span class="subheading">{{general.node.subtitle}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header> -->
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -63,6 +79,18 @@
           }
         }
       }
+      <!-- generals:allStrapiGeneral{
+        edges{
+          node{
+            id
+            title
+            subtitle
+            cover{
+              url
+            }
+          }
+        }
+      } -->
     }
   </page-query>
 <script>
@@ -75,9 +103,9 @@ export default {
     Pager,
   },
   computed:{
-    general(){
-      return this.$page.generals.edges[0]
-    }
+    // general(){
+    //   return this.$page.generals.edges[0]
+    // }
   },
   metaInfo: {
     title: "Hello, world!",
