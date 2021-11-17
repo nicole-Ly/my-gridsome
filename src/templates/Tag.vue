@@ -42,7 +42,6 @@
         id
         title
         content
-        isPublish
         created_at
       }
     }

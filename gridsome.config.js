@@ -13,7 +13,7 @@ module.exports = {
         apiURL: process.env.GRIDSOME_API_URL,
         queryLimit: 1000, // Defaults to 100
         contentTypes: ['post','tag'],
-        singleTypes: ['general']
+        // singleTypes: ['general']
         // Possibility to login with a Strapi user,
         // when content types are not publicly available (optional).
         // loginData: {

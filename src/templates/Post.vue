@@ -36,7 +36,6 @@
       id
       title
       content
-      isPublish
       cover{
         url
       }
