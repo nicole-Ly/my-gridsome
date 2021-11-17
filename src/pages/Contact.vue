@@ -22,23 +22,23 @@
                     <div class="my-5">
                         <form>
                             <div class="form-floating">
-                                <input class="form-control" id="inputName" type="text" placeholder="Enter your name..." />
+                                <input class="form-control" id="inputName" v-model="form.name" type="text" placeholder="Enter your name..." />
                                 <label for="inputName">Name</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="inputEmail" type="email" placeholder="Enter your email..." />
+                                <input class="form-control" id="inputEmail" v-model="form.email" type="email" placeholder="Enter your email..." />
                                 <label for="inputEmail">Email address</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number..." />
+                                <input class="form-control" id="inputPhone" v-model="form.phone" type="tel" placeholder="Enter your phone number..." />
                                 <label for="inputPhone">Phone Number</label>
                             </div>
                             <div class="form-floating">
-                                <textarea class="form-control" id="inputMessage" placeholder="Enter your message here..." style="height: 12rem"></textarea>
+                                <textarea class="form-control" id="inputMessage" v-model="form.message" placeholder="Enter your message here..." style="height: 12rem"></textarea>
                                 <label for="inputMessage">Message</label>
                             </div>
                             <br />
-                            <button class="btn btn-primary text-uppercase" type="submit">Send</button>
+                            <button class="btn btn-primary text-uppercase" type="submit" @click.prevent="onsubmit">Send</button>
                         </form>
                     </div>
                 </div>
@@ -49,8 +49,34 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-
+  name:"concactPage",
+  data(){
+    return {
+      form:{
+        name:'',
+        email:'',
+        phone:'',
+        message:'',
+      }
+    }
+  },
+  methods:{
+    async onsubmit(){
+      try { 
+        await axios({
+          method: 'post',
+          url: 'http://localhost:1337/contacts',
+          data:this.form
+        });
+        window.alert("发送成功")
+      } catch (error) {
+        window.alert("发送失败")
+        console.log(error)
+      }
+    }
+  }
 }
 </script>
 
