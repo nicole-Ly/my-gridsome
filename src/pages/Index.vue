@@ -1,10 +1,9 @@
 <template>
   <Layout>
     <!-- Page Header-->
-    <!-- <header
+    <header
       class="masthead"
-      :style="`background-image: url('${GRIDSOME_API_URL}${general.node.cover.url}')`">
-    >
+      :style="`background-image: url('${GRIDSOME_API_URL}${general.node.cover[0].url}')`">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
@@ -15,7 +14,7 @@
           </div>
         </div>
       </div>
-    </header> -->
+    </header>
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -79,7 +78,7 @@
           }
         }
       }
-      <!-- generals:allStrapiGeneral{
+      generals:allStrapiGeneral{
         edges{
           node{
             id
@@ -90,7 +89,7 @@
             }
           }
         }
-      } -->
+      }
     }
   </page-query>
 <script>
@@ -103,9 +102,9 @@ export default {
     Pager,
   },
   computed:{
-    // general(){
-    //   return this.$page.generals.edges[0]
-    // }
+    general(){
+      return this.$page.generals.edges[0]
+    }
   },
   metaInfo: {
     title: "Hello, world!",
